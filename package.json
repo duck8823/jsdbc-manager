@@ -1,0 +1,14 @@
+{
+  "name": "jsdbc-manager",
+  "version": "0.0.1",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "rewire": "^2.5.2",
+    "sqlite3": "latest"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
+  }
+}
