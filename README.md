@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/duck8823/jsdbc-manager/badge.svg?branch=master)](https://coveralls.io/github/duck8823/jsdbc-manager?branch=master)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
   
-ƒNƒ‰ƒX‚ğ“®“I‚É¶¬‚µ‚Äƒf[ƒ^ƒx[ƒX‚ğ‘€ì‚·‚é  
+ã‚¯ãƒ©ã‚¹ã‚’å‹•çš„ã«ç”Ÿæˆã—ã¦ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æ“ä½œã™ã‚‹  
   
 ## INSTALL
 ```sh
@@ -15,34 +15,34 @@ npm install https://github.com/duck8823/jsdbc-manager.git
 const jsdbc = require('jsdbc-manager');
 
 
-// ƒNƒ‰ƒX‚Ì“®“I¶¬
+// ã‚¯ãƒ©ã‚¹ã®å‹•çš„ç”Ÿæˆ
 const Hoge = jsdbc.struct('Hoge', ['id', 'name']);
-// ƒf[ƒ^ƒx[ƒX‚Ö‚ÌÚ‘±
+// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®æ¥ç¶š
 const manager = jsdbc.connect('SQLite3', './test.db');
-// ƒe[ƒuƒ‹‚Ìì¬
+// ãƒ†ãƒ¼ãƒ–ãƒ«ã®ä½œæˆ
 manager.create(new Hoge('INTEGER', 'TEXT')).execute();
-// ƒf[ƒ^‚Ì‘}“ü
+// ãƒ‡ãƒ¼ã‚¿ã®æŒ¿å…¥
 manager.insert(new Hoge(1, 'name_1')).execute();
 manager.insert(new Hoge(2, 'name_2')).execute();
-// ƒf[ƒ^‚Ìæ“¾iƒŠƒXƒgj
+// ãƒ‡ãƒ¼ã‚¿ã®å–å¾—ï¼ˆãƒªã‚¹ãƒˆï¼‰
 manager.from(Hoge).list((err, rows) => {
 	rows.forEach((row) => {
 		console.log(row);
 	});
 });
 manager.from(Hoge).where(new jsdbc.Where('name', 'name', jsdbc.Operator.LIKE)).list();
-// ƒf[ƒ^‚Ìæ“¾iˆêˆÓj
+// ãƒ‡ãƒ¼ã‚¿ã®å–å¾—ï¼ˆä¸€æ„ï¼‰
 manager.from(Hoge).where(new jsdbc.Where('id', 1, jsdbc.Operator.EQUAL)).singleResult((err, row) => {
 	console.log(row);
 });
-// ƒf[ƒ^‚Ìíœ
+// ãƒ‡ãƒ¼ã‚¿ã®å‰Šé™¤
 manager.from(Hoge).where(new jsdbc.Where('id', 1, jsdbc.Operator.EQUAL)).delete().execute();
-// ƒe[ƒuƒ‹‚Ìíœ
+// ãƒ†ãƒ¼ãƒ–ãƒ«ã®å‰Šé™¤
 manager.drop(Hoge).execute();
-// SQL‚Ìæ“¾
+// SQLã®å–å¾—
 var createSQL = manager.create(new Hoge('INTEGER', 'TEXT')).getSQL();
 var insertSQL = manager.insert(new Hoge(1, 'name_1')).getSQL();
-var deleteSQL = manager.from(Hoge).where(new jsdbc.Where('id', 1, jsdbc.Operator.EQUAL)).getSQL();
+var deleteSQL = manager.from(Hoge).where(new jsdbc.Where('id', 1, jsdbc.Operator.EQUAL)).delete().getSQL();
 var dropSQL = manager.drop(Hoge).getSQL();
 ```
 
