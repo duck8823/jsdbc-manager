@@ -31,7 +31,7 @@ describe('readme', () => {
 		// SQL�̎擾
 		var createSQL = manager.create(new Hoge('INTEGER', 'TEXT')).getSQL();
 		var insertSQL = manager.insert(new Hoge(1, 'name_1')).getSQL();
-		var deleteSQL = manager.from(Hoge).where(new jsdbc.Where('id', 1, jsdbc.Operator.EQUAL)).getSQL();
+		var deleteSQL = manager.from(Hoge).where(new jsdbc.Where('id', 1, jsdbc.Operator.EQUAL)).delete().getSQL();
 		var dropSQL = manager.drop(Hoge).getSQL();
 		}).to.not.throw('Error');
 	});
